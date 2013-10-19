@@ -1,0 +1,33 @@
+
+ifneq (, $(ARCH))
+	CFLAGS+=-arch ${ARCH}
+	LDFLAGS+=-arch ${ARCH}
+endif
+
+CFLAGS+= -I../include
+LDFLAGS+= -L../src
+
+BINDIR=bin
+
+ifeq (, $(PREFIX))
+    PREFIX = /usr/local
+endif
+
+all: g729a-dec g729a-enc
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+g729a-dec: decoder.o
+	$(CC) $(LDFLAGS) $+ -o $(ARCH)decoder $(LDFLAGS) -lg729a
+
+g729a-enc: coder.o
+	$(CC) $(LDFLAGS) $+ -o $(ARCH)coder $(LDFLAGS) -lg729a
+
+install: g729a-dec g729a-enc
+	install -d $(DESTDIR)$(PREFIX)/$(BINDIR)
+	install $(ARCH)coder $(ARCH)decoder $(DESTDIR)$(PREFIX)/$(BINDIR)
+
+clean:
+	rm $(ARCH)coder $(ARCH)decoder *.o
+
