@@ -24,3 +24,7 @@ License
 
 This code is licensed under GNU General Public License. See LICENSE for more details.
 
+Patent information
+------------------
+
+Despite this implementation is open-source, the use of G729 remains governed by a patent license to be acquired from G729 patent holder representatives.
