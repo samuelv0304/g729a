@@ -6,9 +6,9 @@ Compilation
 
 - Download the source from Github
 - Modify some variables:
-   + INSTALLDIR
-   + DEST
-   + maybe DEVPATH, SDKPATH, IPHONEOS_DEPLOYMENT_TARGET
+   -- INSTALLDIR
+   -- DEST
+   -- maybe DEVPATH, SDKPATH, IPHONEOS_DEPLOYMENT_TARGET
 - Run 'build_ios.sh', the library is compiled for armv6/armv7 into ${INSTALLDIR}/lib
 
 Assessment / Check
